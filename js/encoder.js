@@ -12,9 +12,22 @@ keys_desencrip.set("ai", "a");
 keys_desencrip.set("ober", "o");
 keys_desencrip.set("ufat", "u");
 
+function cadenaValida(cadena) {
+  expresion = /[A-Zá-úÁ-Ú]/g;
+  if (cadena.match(expresion) != null) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
 function encriptar() {
   // Lectura de entrada
-  var input = document.getElementById("input-text").value.toLowerCase();
+  if (cadenaValida(document.getElementById("input-text").value) == false) {
+    alert("Solo letras minusculas y sin acento");
+    return;
+  }
+  var input = document.getElementById("input-text").value;
   document.getElementById("input-text").value = "";
   var output = "";
 
@@ -29,11 +42,19 @@ function encriptar() {
 
   // Retorno de entrada encriptada
   document.getElementById("output-text").value = output;
+
+  document.getElementById("salida-llena").style.display = "block";
+  document.getElementById("salida-vacia").style.display = "none";
 }
 
 function desencriptar() {
   // Lectura de entrada
-  var input = document.getElementById("input-text").value.toLowerCase();
+  if (cadenaValida(document.getElementById("input-text").value) == false) {
+    alert("Solo letras minusculas y sin acento");
+    return;
+  }
+
+  var input = document.getElementById("input-text").value;
   document.getElementById("input-text").value = "";
   var output = "";
 
@@ -46,11 +67,16 @@ function desencriptar() {
 
   // Retorno de entrada desencriptada
   document.getElementById("output-text").value = output;
+
+  document.getElementById("salida-llena").style.display = "block";
+  document.getElementById("salida-vacia").style.display = "none";
 }
 
 function copyToClipBoard() {
   var content = document.getElementById("output-text");
   content.select();
   document.execCommand("copy");
-  document.getElementById("output-text").value = "";
+
+  document.getElementById("salida-vacia").style.display = "block";
+  document.getElementById("salida-llena").style.display = "none";
 }

@@ -4,33 +4,57 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/styles-index.css" />
     <script type="text/javascript" src="js/encoder.js"></script>
     <title>Challenge ONE Codificador</title>
   </head>
   <body>
     <main>
-      <div id="section-input">
-        <img id="img-logo" src="img/logo.png" alt="Logo" />
+      <!-- Seccion Input -->
+      <section id="section-input">
+        <div id="img-logo">
+          <img src="img/logo.png" alt="Logo" />
+        </div>
+        <!-- Input Text -->
+        <div id="panel-input-text">
+          <textarea id="input-text" placeholder="Ingrese el texto aqui"></textarea>
+        </div>
+        <!-- Panel -->
+        <div id="panel-codificacion"">
+          <!-- info -->
+          <div id="info">
+            <img src="img/info.png" alt="info" />
+            <label for="info">Solo letras minúsculas y sin acentos</label>
+          </div>
+          <!-- actions -->
+          <div id="actions">
+            <input class="action-button" type="submit" value="Encriptar" onclick="encriptar()" />
+            <input
+              class="action-button"
+              type="submit"
+              value="Desencriptar"
+              onclick="desencriptar()"
+            />
+          </div>
+        </div>
+      </section>
 
-        <textarea
-          id="input-text"
-          placeholder="Ingrese el texto aqui"
-        ></textarea>
-
-        <img src="img/info.png" alt="info" />
-        <label for="nombreapellido">Solo letras minúsculas y sin acentos</label>
-
-        <input type="submit" value="Encriptar" onclick="encriptar()" />
-        <input type="submit" value="Desencriptar" onclick="desencriptar()" />
-      </div>
-
-      <div id="section-output">
-        <textarea id="output-text"></textarea>
-        <input type="submit" value="Copiar" onclick="copyToClipBoard()" />
-      </div>
+      <!-- Seccion Output -->
+      <section id="section-output">
+        <div id="salida-vacia" style="display:block">
+          <img id="img-muñeco" src="img/muñeco.png" alt="Muñeco"/>
+          <label id="info-muñeco-1">Ningun mensaje fue encontrado</label>
+          <label id="info-muñeco-2">Ingresa el texto que deseas encriptar o desencriptar</label>
+        </div>
+        <div id="salida-llena" style="display:none">
+          <textarea id="output-text"></textarea>
+          <div id="action-copy">
+            <input class="action-button" type="submit" value="Copiar" onclick="copyToClipBoard()" />
+          </div>
+        </div>
+      </section>
     </main>
-
-    <footer></footer>
+    
   </body>
 </html>
